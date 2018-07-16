@@ -1,0 +1,54 @@
+{
+  "name": "tscli",
+  "description": "testcli",
+  "version": "0.0.0",
+  "author": "Bret Comnes @bcomnes",
+  "bin": {
+    "tscli": "./bin/run"
+  },
+  "bugs": "https://github.com/bcomnes/tscli/issues",
+  "dependencies": {},
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.15.4",
+    "@oclif/tslint": "^1.1.2",
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.4",
+    "@types/node": "^10.5.2",
+    "globby": "^8.0.1",
+    "ts-node": "^6.2.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/bcomnes/tscli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "tscli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "bcomnes/tscli",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "posttest": "tsc -p . --noEmit && tslint -p . -t stylish",
+    "prepack": "rm -rf lib && tsc && oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
+    "prepare": "rm -rf lib && tsc",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
